@@ -1,10 +1,12 @@
 package Exercies;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 
-@Component
+//@Component
+@Service
 public class BusinessCalculationService {
     private DataService dataService;
 
