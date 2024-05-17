@@ -1,20 +1,41 @@
 package com.in28minutes.rest.webservices.resftfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.util.List;
 
+@Entity(name = "user_details")
 public class User {
+
+    //states
+    @Id
+    @GeneratedValue
     private Integer id;
 
     //name must be more than two character
     @Size(min = 2, message = "Name should have at least 2 characters")
+//    @JsonProperty("user_name")
     private String name;
 
     //birthDate must be in the past
     @Past(message = "Birth Date should be in the past")
+//    @JsonProperty("birth_date")
     private LocalDate birthDate;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Post> posts;
+
+    //constructors
+    public User() {
+    }
 
     public User(Integer id, String name, LocalDate birthDate) {
         this.id = id;
@@ -22,6 +43,7 @@ public class User {
         this.birthDate = birthDate;
     }
 
+    //user behaviors
     public Integer getId() {
         return id;
     }
@@ -44,6 +66,15 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    //post behavior
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
