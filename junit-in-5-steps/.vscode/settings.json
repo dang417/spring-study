@@ -1,0 +1,13 @@
+{
+  "java.project.sourcePaths": ["src"],
+  "java.project.outputPath": "bin",
+  "java.project.referencedLibraries": ["lib/**/*.jar"],
+  "java.test.config": {
+    "name": "JUnit5",
+    "workingDirectory": "${workspaceFolder}",
+    "vmargs": ["-ea"],
+    "args": [],
+    "env": {}
+  },
+  "java.test.defaultConfig": "JUnit5"
+}
